@@ -10,7 +10,7 @@ file(GLOB_RECURSE sources "${CMAKE_CURRENT_SOURCE_DIR}/src/*.c"
 )
 list(APPEND all_files ${headers} ${sources})
 
-if(false)
+if(BUILD_SINGLETON_SYSTEM_SHARED_LIBS)
   message("Build ${PROJECT_NAME} Shared Libs")
   add_library(${PROJECT_NAME} SHARED ${all_files})
 
@@ -34,4 +34,11 @@ target_include_directories(
 
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake COMPONENT ${PROJECT_NAME}
+)
+
+target_compile_options(
+  ${PROJECT_NAME}
+  PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/W4 /wd4127 /EHsc>
+          $<$<CXX_COMPILER_ID:GNU>:-Wall -Wextra>
+          $<$<CXX_COMPILER_ID:Clang>:-Wall -Wextra>
 )

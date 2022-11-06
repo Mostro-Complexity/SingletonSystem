@@ -13,7 +13,6 @@ namespace transport
 		ExtendedObjectTransportProxy();
 		~ExtendedObjectTransportProxy();
 		std::vector<std::string> buffer;
-
 	private:
 	};
 

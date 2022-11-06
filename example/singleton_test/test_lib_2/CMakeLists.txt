@@ -19,7 +19,7 @@ else()
   add_library(${PROJECT_NAME} STATIC ${sources} ${headers})
 endif()
 
-target_sources(${PROJECT_NAME} PRIVATE "main.cpp")
+target_sources(${PROJECT_NAME} PRIVATE ${sources})
 
 target_include_directories(
   ${PROJECT_NAME}
@@ -34,3 +34,9 @@ target_link_libraries(
   ${PROJECT_NAME} PUBLIC common
 )
 
+target_compile_options(
+  ${PROJECT_NAME}
+  PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/W4 /wd4127 /EHsc>
+          $<$<CXX_COMPILER_ID:GNU>:-Wall -Wextra>
+          $<$<CXX_COMPILER_ID:Clang>:-Wall -Wextra>
+)

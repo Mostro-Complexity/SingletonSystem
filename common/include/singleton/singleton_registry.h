@@ -4,11 +4,11 @@
 #include <unordered_map>
 
 #include "singleton/singleton.h"
-
+#include "common_global.h"
 
 namespace common
 {
-    class SingletonRegistry : public Singleton<SingletonRegistry>
+    class COMMON_EXPORT_API SingletonRegistry : public Singleton<SingletonRegistry>
     {
     public:
         explicit SingletonRegistry() {}

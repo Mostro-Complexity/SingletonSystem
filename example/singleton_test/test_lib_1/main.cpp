@@ -1,5 +1,5 @@
 #include "test_lib_1_header.h"
-
+#include "singleton/singleton.h"
 #include "transport/object_transport_proxy.h"
 
 void lib_1_test_foo(const std::string& text) 

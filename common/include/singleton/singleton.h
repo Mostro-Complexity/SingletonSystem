@@ -7,7 +7,7 @@
 namespace common
 {
     template <typename T>
-    class COMMON_EXPORT_API Singleton
+    class Singleton
     {
     public:
         static T& Instance();
